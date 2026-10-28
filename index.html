@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="theme-color" content="#f2f5f9">
+<meta name="format-detection" content="telephone=no">
+<title>Морковск 2.0 — Ozon</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f2f5f9;color:#001a34;line-height:1.45;font-size:15px}
+.wrap{max-width:540px;margin:0 auto;padding:14px 12px 32px}
+
+/* header — Ozon style */
+.head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0 14px}
+.brand{display:flex;align-items:center;gap:6px;font-size:20px;font-weight:900;color:#005bff;letter-spacing:-.5px}
+.brand .oz{width:30px;height:30px;flex:0 0 30px}
+.brand span{color:#f91155}
+.date{flex:0 0 auto;padding:6px 12px;border-radius:10px;background:#fff;border:1px solid #e5eaf0;font-size:12px;font-weight:800;color:#005bff}
+
+/* ВАЖНО: блок-инструкция вверху */
+.lead{padding:18px 16px;border-radius:20px;text-align:center;background:#fff;border:2px solid #f91155;margin-bottom:14px}
+.lead .icon{font-size:34px;line-height:1}
+.lead h2{font-size:17px;font-weight:900;color:#001a34;margin:6px 0 6px}
+.lead p{font-size:13px;color:#5c6f82;margin-bottom:12px}
+.lead .step-line{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:700;color:#001a34;margin-bottom:12px}
+.lead .step-line b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#eaf1ff;color:#005bff;font-size:12px}
+.lead .vote-big{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;border-radius:12px;font-size:15px;font-weight:900;color:#fff;text-decoration:none;background:#f91155;border:0;letter-spacing:.3px}
+.lead .vote-big:active{background:#d10e47}
+
+/* hero */
+.hero{padding:24px 16px;border-radius:20px;text-align:center;background:#fff;border:1px solid #e5eaf0}
+.badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:5px 12px;border-radius:999px;background:#eaf1ff;color:#005bff;font-size:11px;font-weight:900;letter-spacing:.3px}
+.badge .oz{width:14px;height:14px}
+.hero h1{font-size:26px;font-weight:900;line-height:1.15;color:#001a34}
+.hero h1 em{font-style:normal;color:#f91155}
+.hero p{margin-top:10px;font-size:14px;color:#5c6f82}
+
+/* sections */
+.sec{margin-top:16px}
+.sec-title{font-size:15px;font-weight:900;color:#001a34;margin-bottom:9px;padding-left:2px}
+.sec-title span{color:#f91155}
+
+/* cards */
+.card{display:flex;align-items:center;gap:9px;padding:10px;margin-bottom:8px;border-radius:14px;background:#fff;border:1px solid #e5eaf0}
+.card.top{border-color:#005bff;background:#f4f9ff}
+.rank{flex:0 0 24px;width:24px;text-align:center;font-weight:900;font-size:15px;color:#b0c0d0}
+.card.top .rank{color:#005bff}
+.ava{flex:0 0 40px;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff;background:#005bff}
+.card.top .ava{background:#f91155}
+.info{flex:1;min-width:0}
+.name{display:block;font-size:14px;font-weight:800;color:#001a34;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{display:block;font-size:11px;color:#8fa2b5;margin-top:2px}
+.vote{flex:0 0 auto;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:10px;font-size:12px;font-weight:900;color:#fff;text-decoration:none;background:#005bff;border:0}
+.vote:active{background:#0047c7}
+
+/* prize */
+.prize{padding:24px 14px;border-radius:20px;text-align:center;color:#fff;background:#001a34}
+.prize .icon{font-size:40px;line-height:1}
+.prize h2{font-size:18px;margin:8px 0 4px;font-weight:800}
+.prize .money{font-size:28px;font-weight:900;color:#4fc3ff;line-height:1.1;letter-spacing:-.5px}
+.prize .gname{font-size:13px;font-weight:700;color:#b8cfe6;margin-top:6px}
+.prize p{margin-top:5px;font-size:12px;color:#93aecb}
+
+/* list */
+.list{background:#fff;border:1px solid #e5eaf0;border-radius:16px;padding:12px}
+.row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #edf1f6;font-size:13px;color:#33475b}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row:first-child{padding-top:0}
+.dot{flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:#eaf1ff;color:#005bff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+.row.gold .dot{background:#fff2dc;color:#d97706}
+
+/* bonus */
+.bonus{display:flex;flex-wrap:wrap;gap:8px}
+.chip{flex:1 1 calc(50% - 4px);padding:12px 8px;border-radius:12px;text-align:center;background:#fff;border:1px solid #e5eaf0;font-size:12px;font-weight:700;color:#4a5c6d}
+
+/* cta */
+.cta{margin-top:16px;padding:22px 14px;border-radius:20px;text-align:center;background:#005bff;color:#fff}
+.cta strong{display:block;font-size:17px;font-weight:900}
+.cta span{display:block;margin-top:6px;font-size:12px;opacity:.92}
+
+.ftr{margin-top:16px;text-align:center;font-size:11px;color:#95a5b5;line-height:1.5}
+
+@media(max-width:360px){.hero h1{font-size:22px}.vote{font-size:11px;padding:0 10px}.prize .money{font-size:24px}.lead .vote-big{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+<div class="brand">
+<svg class="oz" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="#005bff" stroke-width="6"/><circle cx="20" cy="20" r="6" fill="#f91155"/></svg>
+<span>Ozon</span>
+</div>
+<div class="date">до 31 октября</div>
+</div>
+
+<!-- НОВЫЙ БЛОК: как проголосовать -->
+<div class="lead">
+<div class="icon">🗳️</div>
+<h2>Проголосуйте за участника!</h2>
+<div class="step-line"><b>1</b> Выберите участника <b>2</b> Нажмите «ПРОГОЛОСОВАТЬ»</div>
+<p>Один клик — и ваш голос учтён. Поддержите фаворита прямо сейчас!</p>
+<a class="vote-big" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+
+<div class="hero">
+<div class="badge">
+<svg class="oz" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="#005bff" stroke-width="6"/><circle cx="20" cy="20" r="6" fill="#f91155"/></svg>
+МОРКОВСК 2.0
+</div>
+<h1>Собирайте <em>морковки</em> — выигрывайте призы</h1>
+<p>Тратьте морковки на билеты в Фортунате и участвуйте в розыгрыше. Каждый билет — шанс!</p>
+</div>
+
+<div class="sec">
+<div class="sec-title">ТОП-5 <span>участников</span></div>
+
+<div class="card top">
+<div class="rank">1</div><div class="ava">С</div>
+<div class="info"><span class="name">Солодягина Надежда</span><span class="tag">Участник №1</span></div>
+<a class="vote" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+
+<div class="card">
+<div class="rank">2</div><div class="ava">Г</div>
+<div class="info"><span class="name">Галина Шестунова</span><span class="tag">Участник №2</span></div>
+<a class="vote" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+
+<div class="card">
+<div class="rank">3</div><div class="ava">Е</div>
+<div class="info"><span class="name">Елена Орлова</span><span class="tag">Участник №3</span></div>
+<a class="vote" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+
+<div class="card">
+<div class="rank">4</div><div class="ava">Я</div>
+<div class="info"><span class="name">Ярослав Бирюков</span><span class="tag">Участник №4</span></div>
+<a class="vote" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+
+<div class="card">
+<div class="rank">5</div><div class="ava">М</div>
+<div class="info"><span class="name">Марина Акимова</span><span class="tag">Участник №5</span></div>
+<a class="vote" href="https://womenprosports.com/6qrcdcd03d3rh5wefkmk" rel="nofollow noopener noreferrer" target="_blank">ПРОГОЛОСОВАТЬ</a>
+</div>
+</div>
+
+<div class="sec">
+<div class="prize">
+<div class="icon">🥕</div>
+<h2>ГЛАВНЫЙ ПРИЗ</h2>
+<div class="money">iPhone 17 Pro</div>
+<div class="gname">Плюс джекпот и техника</div>
+<p>Розыгрыш среди участников с билетами</p>
+</div>
+</div>
+
+<div class="sec">
+<div class="sec-title">Призы <span>Морковска</span></div>
+<div class="list">
+<div class="row"><span class="dot">📱</span>Apple iPhone 17 Pro</div>
+<div class="row"><span class="dot">🎧</span>Apple AirPods — 5 шт.</div>
+<div class="row"><span class="dot">⌚</span>Apple Watch — 1 шт.</div>
+<div class="row"><span class="dot">🔊</span>Яндекс Станция Мини 3</div>
+<div class="row"><span class="dot">🎁</span>Баллы Ozon: 15 / 50 / 100 / 150</div>
+<div class="row"><span class="dot">💎</span>ВАУ-баллы Ozon</div>
+<div class="row"><span class="dot">💰</span>Джекпот — денежный приз</div>
+<div class="row"><span class="dot">✅</span>Официальная акция Ozon</div>
+</div>
+</div>
+
+<div class="sec">
+<div class="sec-title">Как участвовать?</div>
+<div class="list">
+<div class="row gold"><span class="dot">1</span>Выполняйте задания и получайте морковки</div>
+<div class="row gold"><span class="dot">2</span>Тратьте морковки на билеты в Фортунате</div>
+<div class="row gold"><span class="dot">3</span>Открывайте Лукошко раз в день</div>
+<div class="row gold"><span class="dot">4</span>Следите за результатами розыгрышей</div>
+</div>
+</div>
+
+<div class="sec">
+<div class="sec-title">Бонусы</div>
+<div class="bonus">
+<div class="chip">🥕 Морковки за заказы</div>
+<div class="chip">🎟 Бесплатный билет</div>
+<div class="chip">📲 Push о розыгрышах</div>
+<div class="chip">🏅 Баллы Ozon</div>
+</div>
+</div>
+
+<div class="cta">
+<strong>СОБИРАЙТЕ МОРКОВКИ — ВЫИГРЫВАЙТЕ ПРИЗЫ!</strong>
+<span>Участвуйте в официальной акции Ozon</span>
+</div>
+
+<div class="ftr">
+Организатор: ООО «Интернет Решения» (Ozon).<br>
+Условия акции: docs.ozon.ru. Акция не является лотереей.
+</div>
+
+</div>
+</body>
+</html>
